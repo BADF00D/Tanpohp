@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq.Expressions;
+using ScreenDimmer.Annotations;
 
 #endregion
 
@@ -17,7 +18,7 @@ namespace Tanpohp.Extensions
         /// <param name="object">Any object.</param>
         /// <param name="selectorExpression">Expression that sepcifies the property.</param>
         /// <returns></returns>
-        public static string GetPropertyName<T>(this Object @object, Expression<Func<T>> selectorExpression)
+        public static string GetPropertyName<T>(this Object @object, [NotNull]Expression<Func<T>> selectorExpression)
         {
             var body = selectorExpression.Body as MemberExpression;
             if (body == null) throw new ArgumentException("The body of the selectorExpression has to be a member expression.");

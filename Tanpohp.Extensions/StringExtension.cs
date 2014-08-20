@@ -1,4 +1,6 @@
-﻿namespace Tanpohp.Extensions
+﻿using ScreenDimmer.Annotations;
+
+namespace Tanpohp.Extensions
 {
     public static class StringExtension
     {
@@ -8,7 +10,7 @@
         /// <param name="format">String with format.</param>
         /// <param name="parameter">Arrya with parameter.</param>
         /// <returns></returns>
-        //[StringFormatMethod("format")] //todo
+        [StringFormatMethod("format")]
         public static string FormatWith(this string format, params object[] parameter)
         {
             return string.Format(format, parameter);

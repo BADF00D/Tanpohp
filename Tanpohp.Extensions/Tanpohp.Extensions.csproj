@@ -48,6 +48,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringExtension.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tanpohp.Annotations\Tanpohp.Annotations.csproj">
+      <Project>{2AA74E63-6FD6-4650-A17A-145D243DEB93}</Project>
+      <Name>Tanpohp.Annotations</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

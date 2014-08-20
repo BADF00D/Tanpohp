@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using ScreenDimmer.Annotations;
 
 #endregion
 
@@ -15,7 +16,7 @@ namespace Tanpohp.Extensions
         /// <typeparam name="T">Generic type.</typeparam>
         /// <param name="sequence">Sequence to walk through.</param>
         /// <param name="action">Action to perform on each item.</param>
-        public static void ForEach<T>(this IEnumerable<T> sequence, Action<T> action)
+        public static void ForEach<T>(this IEnumerable<T> sequence, [NotNull]Action<T> action)
         {
             foreach (var item in sequence)
             {

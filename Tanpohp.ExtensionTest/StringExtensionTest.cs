@@ -10,6 +10,7 @@ namespace Tanpohp.ExtensionTest
     [TestFixture]
     public class StringExtensionTest
     {
+        [Test]
         public void TestFormatWith()
         {
             var expected = string.Format("{0}", "Test");
