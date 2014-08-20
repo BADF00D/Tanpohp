@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ScreenDimmer.Annotations
+namespace Tanpohp.Annotations.Resharper
 {
     /// <summary>
     /// Indicates that the marked symbol is used implicitly (e.g. via reflection, in external library),

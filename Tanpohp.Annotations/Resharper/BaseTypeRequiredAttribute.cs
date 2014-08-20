@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ScreenDimmer.Annotations
+namespace Tanpohp.Annotations.Resharper
 {
     /// <summary>
     /// When applied to target attribute, specifies a requirement for any type which is marked with 

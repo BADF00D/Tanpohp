@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ScreenDimmer.Annotations
+namespace Tanpohp.Annotations.Resharper
 {
     /// <summary>
     /// Indicates that the marked method is assertion method, i.e. it halts control flow if one of the conditions is satisfied. 

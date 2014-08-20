@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ScreenDimmer.Annotations
+namespace Tanpohp.Annotations.Resharper
 {
     /// <summary>
     /// Indicates that the value of marked element could never be <c>null</c>

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ScreenDimmer.Annotations
+namespace Tanpohp.Annotations.Resharper
 {
     /// <summary>
     /// Indicates that the value of marked type (or its derivatives) cannot be compared using '==' or '!=' operators.

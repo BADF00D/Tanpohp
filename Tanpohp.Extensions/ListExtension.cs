@@ -1,7 +1,7 @@
 ﻿#region usings
 
 using System.Collections.Generic;
-using ScreenDimmer.Annotations;
+using Tanpohp.Annotations.Resharper;
 
 #endregion
 

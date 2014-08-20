@@ -1,5 +1,5 @@
 ﻿using System;
-using ScreenDimmer.Annotations;
+using Tanpohp.Annotations.Resharper;
 
 namespace Tanpohp.Data.ValueProvider
 {

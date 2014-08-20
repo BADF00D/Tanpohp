@@ -1,4 +1,4 @@
-﻿using ScreenDimmer.Annotations;
+﻿using Tanpohp.Annotations.Resharper;
 
 namespace Tanpohp.Extensions
 {

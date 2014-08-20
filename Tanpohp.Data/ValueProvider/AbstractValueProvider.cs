@@ -2,7 +2,7 @@
 
 using System;
 using System.Diagnostics;
-using ScreenDimmer.Annotations;
+using Tanpohp.Annotations.Resharper;
 using Tanpohp.Extensions;
 
 #endregion

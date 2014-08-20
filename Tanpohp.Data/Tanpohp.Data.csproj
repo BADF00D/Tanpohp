@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChangeTrackingNotificationObject.cs" />
+    <Compile Include="NotificationObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValueProvider\AbstractValueProvider.cs" />
     <Compile Include="ValueProvider\ExceptionThrowingValueProvider.cs" />

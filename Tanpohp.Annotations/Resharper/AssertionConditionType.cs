@@ -1,4 +1,4 @@
-﻿namespace ScreenDimmer.Annotations
+﻿namespace Tanpohp.Annotations.Resharper
 {
     /// <summary>
     /// Specifies assertion type. If the assertion method argument satisifes the condition, then the execution continues. 
