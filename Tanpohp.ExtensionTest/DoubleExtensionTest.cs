@@ -59,5 +59,17 @@ namespace Tanpohp.ExtensionTest
 
             Assert.AreEqual(true, inRange);
         }
+
+        [Test]
+        public void TestToRadian1()
+        {
+            Assert.AreEqual(Math.PI, 180.0.ToRadian());
+        }
+
+        [Test]
+        public void TestToDegree1()
+        {
+            Assert.AreEqual(180.0, Math.PI.ToDegree());
+        }
     }
 }

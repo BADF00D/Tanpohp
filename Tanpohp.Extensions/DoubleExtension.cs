@@ -20,5 +20,25 @@ namespace Tanpohp.Extensions
             if (lower > upper) throw new ArgumentException("Lower has to be lower or equals to upper.");
             return value.CompareTo(lower) != -1 && value.CompareTo(upper) != 1;
         }
+
+        /// <summary>
+        /// Convert given degree to radian.
+        /// </summary>
+        /// <param name="degree">Degree to convert.</param>
+        /// <returns></returns>
+        public static double ToRadian(this double degree)
+        {
+            return degree * Math.PI / 180.0;
+        }
+
+        /// <summary>
+        /// Convert given radian to degree.
+        /// </summary>
+        /// <param name="radian">Radian to convert.</param>
+        /// <returns></returns>
+        public static double ToDegree(this double radian)
+        {
+            return radian * 180.0 / Math.PI;
+        } 
     }
 }
