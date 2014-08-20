@@ -1,0 +1,1 @@
+﻿The annotations in this namespace are copied from resharper. These helps resharper to identifiy some code issues.
