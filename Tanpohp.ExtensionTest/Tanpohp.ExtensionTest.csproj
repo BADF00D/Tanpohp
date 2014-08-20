@@ -47,6 +47,7 @@
     <Compile Include="DoubleExtensionTest.cs" />
     <Compile Include="EnumerableExtensionTest.cs" />
     <Compile Include="ListExtensionTest.cs" />
+    <Compile Include="ObjectExtensionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
