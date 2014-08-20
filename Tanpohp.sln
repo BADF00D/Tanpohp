@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tanpohp.ExtensionTest", "Ta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tanpohp.Annotations", "Tanpohp.Annotations\Tanpohp.Annotations.csproj", "{2AA74E63-6FD6-4650-A17A-145D243DEB93}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tanpohp.Data", "Tanpohp.Data\Tanpohp.Data.csproj", "{C1976E21-6AF6-4F4F-809A-FFD14F225E27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tanpohp.DataTest", "Tanpohp.DataTest\Tanpohp.DataTest.csproj", "{5BE2AAEA-4C6B-4188-9D32-6D03766DFF9F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{10EF0417-6DAA-4643-877D-ED67727AB66C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,8 +31,20 @@ Global
 		{2AA74E63-6FD6-4650-A17A-145D243DEB93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AA74E63-6FD6-4650-A17A-145D243DEB93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AA74E63-6FD6-4650-A17A-145D243DEB93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1976E21-6AF6-4F4F-809A-FFD14F225E27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1976E21-6AF6-4F4F-809A-FFD14F225E27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1976E21-6AF6-4F4F-809A-FFD14F225E27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1976E21-6AF6-4F4F-809A-FFD14F225E27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BE2AAEA-4C6B-4188-9D32-6D03766DFF9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BE2AAEA-4C6B-4188-9D32-6D03766DFF9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BE2AAEA-4C6B-4188-9D32-6D03766DFF9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BE2AAEA-4C6B-4188-9D32-6D03766DFF9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C4731CB4-472A-4B48-9F61-CB3B919D8B97} = {10EF0417-6DAA-4643-877D-ED67727AB66C}
+		{5BE2AAEA-4C6B-4188-9D32-6D03766DFF9F} = {10EF0417-6DAA-4643-877D-ED67727AB66C}
 	EndGlobalSection
 EndGlobal
