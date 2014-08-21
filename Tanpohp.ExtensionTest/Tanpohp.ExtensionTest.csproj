@@ -51,6 +51,7 @@
     <Compile Include="ObjectExtensionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringExtensionTest.cs" />
+    <Compile Include="TypeExtensionTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tanpohp.Extensions\Tanpohp.Extensions.csproj">
