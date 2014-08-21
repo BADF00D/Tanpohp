@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractPoolTest.cs" />
     <Compile Include="ChangeTrackingNotificationObjectTest.cs" />
     <Compile Include="NotificationObjectTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

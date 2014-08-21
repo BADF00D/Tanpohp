@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractPool.cs" />
     <Compile Include="ChangeTrackingNotificationObject.cs" />
+    <Compile Include="IPool.cs" />
     <Compile Include="NotificationObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValueProvider\AbstractValueProvider.cs" />
