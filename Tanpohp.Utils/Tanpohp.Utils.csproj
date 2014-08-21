@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractBuilder.cs" />
+    <Compile Include="Environment\EnvironmentVariableProvider.cs" />
+    <Compile Include="Environment\IEnvironmentVariableProvider.cs" />
     <Compile Include="Swap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
