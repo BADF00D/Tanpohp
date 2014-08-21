@@ -1,5 +1,6 @@
 ﻿#region usings
 
+using System;
 using System.Collections.Generic;
 using Tanpohp.Annotations.Resharper;
 
@@ -19,6 +20,39 @@ namespace Tanpohp.Extensions
         {
             if (list is List<T>) (list as List<T>).AddRange(values);
             else values.ForEach(list.Add);
+        }
+
+        /// <summary>
+        /// Removes last item and returns it.
+        /// </summary>
+        /// <typeparam name="T">Generic type.</typeparam>
+        /// <param name="list">Source list.</param>
+        /// <returns>Item at last postion.</returns>
+        /// <exception cref="ArgumentException">Thrown is list contains no elements.</exception>
+        public static T PopLast<T>(this IList<T> list)
+        {
+            if (list.IsEmpty()) throw new ArgumentException("List it empty.");
+            var indexOfLast = list.Count - 1;
+            var lastItem = list[indexOfLast];
+            list.RemoveAt(indexOfLast);
+
+            return lastItem;
+        }
+
+        /// <summary>
+        /// Removes frist item and returns it.
+        /// </summary>
+        /// <typeparam name="T">Generic type.</typeparam>
+        /// <param name="list">Source list.</param>
+        /// <returns>Item at first postion.</returns>
+        /// /// <exception cref="ArgumentException">Thrown is list contains no elements.</exception>
+        public static T PopFirst<T>(this IList<T> list)
+        {
+            if (list.IsEmpty()) throw new ArgumentException("List it empty.");
+            var lastItem = list[0];
+            list.RemoveAt(0);
+
+            return lastItem;
         }
     }
 }
