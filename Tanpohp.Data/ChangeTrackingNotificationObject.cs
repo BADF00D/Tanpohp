@@ -13,7 +13,7 @@ namespace Tanpohp.Data
 {
     /// <summary>
     /// This class allows to keep track of properties that got changed. This is done by using the 
-    /// AssignTract methods, instead of the Assign methods from base class.
+    /// AssignTrackt methods, instead of the Assign methods from base class.
     /// </summary>
     public abstract class ChangeTrackingNotificationObject : NotificationObject
     {
