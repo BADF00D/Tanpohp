@@ -45,6 +45,7 @@
     <Compile Include="ChangeTrackingNotificationObjectTest.cs" />
     <Compile Include="NotificationObjectTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SealableObjectTest.cs" />
     <Compile Include="ValueProvider\ExceptionThrowingValueProviderTest.cs" />
     <Compile Include="ValueProvider\NoValidationAbstractValueProviderTest.cs" />
   </ItemGroup>
