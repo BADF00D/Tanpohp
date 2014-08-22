@@ -46,6 +46,8 @@
     <Compile Include="Collections\CacheUpdatedEventArgs.cs" />
     <Compile Include="Collections\ICache.cs" />
     <Compile Include="ChangeTrackingNotificationObject.cs" />
+    <Compile Include="Collections\IRingBuffer.cs" />
+    <Compile Include="Collections\RingBuffer.cs" />
     <Compile Include="IPool.cs" />
     <Compile Include="ISealable.cs" />
     <Compile Include="NotificationObject.cs" />
