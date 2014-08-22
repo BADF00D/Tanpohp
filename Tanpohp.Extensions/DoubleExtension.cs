@@ -1,6 +1,7 @@
 ﻿#region usings
 
 using System;
+using System.Diagnostics;
 
 #endregion
 
@@ -14,7 +15,8 @@ namespace Tanpohp.Extensions
         /// <param name="value">Value to check.</param>
         /// <param name="lower">Lower border of range.</param>
         /// <param name="upper">Upper order of range.</param>
-        /// <returns></returns>
+        /// <returns>True if value is [lower, upper], false otherwise</returns>
+        [DebuggerStepThrough]
         public static bool InRange(this double value, double lower, double upper)
         {
             if (lower > upper) throw new ArgumentException("Lower has to be lower or equals to upper.");
@@ -25,7 +27,8 @@ namespace Tanpohp.Extensions
         /// Convert given degree to radian.
         /// </summary>
         /// <param name="degree">Degree to convert.</param>
-        /// <returns></returns>
+        /// <returns>Radian of given degree.</returns>
+        [DebuggerStepThrough]
         public static double ToRadian(this double degree)
         {
             return degree * Math.PI / 180.0;
@@ -35,7 +38,8 @@ namespace Tanpohp.Extensions
         /// Convert given radian to degree.
         /// </summary>
         /// <param name="radian">Radian to convert.</param>
-        /// <returns></returns>
+        /// <returns>Degree of given radian.</returns>
+        [DebuggerStepThrough]
         public static double ToDegree(this double radian)
         {
             return radian * 180.0 / Math.PI;
