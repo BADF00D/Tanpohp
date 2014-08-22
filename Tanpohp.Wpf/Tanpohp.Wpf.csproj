@@ -5,13 +5,16 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C1976E21-6AF6-4F4F-809A-FFD14F225E27}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{368F3B2C-DE32-4445-B103-FCAC048C0428}</ProjectGuid>
+    <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tanpohp.Data</RootNamespace>
-    <AssemblyName>Tanpohp.Data</AssemblyName>
+    <RootNamespace>Tanpohp.Wpf</RootNamespace>
+    <AssemblyName>Tanpohp.Wpf</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,43 +35,45 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Collections\AbstractPool.cs" />
-    <Compile Include="Collections\Cache.cs" />
-    <Compile Include="Collections\CacheChangedEventArgs.cs" />
-    <Compile Include="Collections\CacheUpdatedEventArgs.cs" />
-    <Compile Include="Collections\ICache.cs" />
-    <Compile Include="ChangeTrackingNotificationObject.cs" />
-    <Compile Include="Collections\IPool.cs" />
-    <Compile Include="Collections\IRingBuffer.cs" />
-    <Compile Include="Collections\RingBuffer.cs" />
-    <Compile Include="ISealable.cs" />
-    <Compile Include="NotificationObject.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SealableObject.cs" />
-    <Compile Include="ValueProvider\AbstractValueProvider.cs" />
-    <Compile Include="ValueProvider\ExceptionThrowingValueProvider.cs" />
-    <Compile Include="ValueProvider\IValueProvider.cs" />
-    <Compile Include="ValueProvider\NoValidationAbstractValueProvider.cs" />
+    <Compile Include="Converter\BooleanToConverter.cs" />
+    <Compile Include="Converter\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Tanpohp.Annotations\Tanpohp.Annotations.csproj">
-      <Project>{2AA74E63-6FD6-4650-A17A-145D243DEB93}</Project>
-      <Name>Tanpohp.Annotations</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Tanpohp.Extensions\Tanpohp.Extensions.csproj">
-      <Project>{3665CB16-D371-4CF8-ABE7-560895CB373D}</Project>
-      <Name>Tanpohp.Extensions</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
