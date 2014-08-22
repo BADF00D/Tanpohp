@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Tanpohp.Extensions;
 
-namespace Tanpohp.Data
+namespace Tanpohp.Data.Collections
 {
     /// <summary>
     /// Defines a threadsave pool for items of type T.

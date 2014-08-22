@@ -3,6 +3,7 @@
 using System;
 using NUnit.Framework;
 using Tanpohp.Data;
+using Tanpohp.Data.Collections;
 
 #endregion
 

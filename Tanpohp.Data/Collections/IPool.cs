@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Tanpohp.Data
+namespace Tanpohp.Data.Collections
 {
     public interface IPool<T> where T : class
     {
