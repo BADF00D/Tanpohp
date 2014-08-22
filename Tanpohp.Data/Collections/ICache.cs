@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Tanpohp.Data.Caching
+namespace Tanpohp.Data.Collections
 {
     /// <summary>
     ///     Defines basic methods and properties for cache with generic identifier and values.

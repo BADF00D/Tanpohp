@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 #endregion
 
-namespace Tanpohp.Data.Caching
+namespace Tanpohp.Data.Collections
 {
     /// <summary>
     /// EventArgs for ItemAdded and ItemRemoved event.

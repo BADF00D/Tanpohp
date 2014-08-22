@@ -9,7 +9,7 @@ using Tanpohp.Extensions;
 
 #endregion
 
-namespace Tanpohp.Data.Caching
+namespace Tanpohp.Data.Collections
 {
     /// <summary>
     /// Threadsafe implementation for ICache interface.

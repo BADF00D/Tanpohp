@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace Tanpohp.Data.Caching
+namespace Tanpohp.Data.Collections
 {
     /// <summary>
     /// EventArgs for ItemAdded and ItemRemoved event.

@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using NUnit.Framework;
-using Tanpohp.Data.Caching;
+using Tanpohp.Data.Collections;
 
-namespace Tanpohp.DataTest.Caching
+namespace Tanpohp.DataTest.Collections
 {
     [TestFixture]
     public class CacheTest
