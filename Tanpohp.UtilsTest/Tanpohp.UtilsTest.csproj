@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AbstractBuilderTest.cs" />
     <Compile Include="Environment\EnvironmentVariableProviderTest.cs" />
+    <Compile Include="Resources\AbstractEmbeddedRessourceReaderTest.cs" />
     <Compile Include="SwapTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -55,6 +56,12 @@
       <Project>{6601C28F-53A6-46D6-8323-00B3496D2D84}</Project>
       <Name>Tanpohp.Utils</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\EmbeddedRessource.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Resource.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

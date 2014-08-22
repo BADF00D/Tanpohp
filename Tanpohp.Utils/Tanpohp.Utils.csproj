@@ -41,8 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractBuilder.cs" />
+    <Compile Include="Resources\AbstractEmeddedRessourceReader.cs" />
     <Compile Include="Environment\EnvironmentVariableProvider.cs" />
     <Compile Include="Environment\IEnvironmentVariableProvider.cs" />
+    <Compile Include="Resources\IEmbeddedRessourceReader.cs" />
     <Compile Include="Swap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -50,6 +52,10 @@
     <ProjectReference Include="..\Tanpohp.Annotations\Tanpohp.Annotations.csproj">
       <Project>{2AA74E63-6FD6-4650-A17A-145D243DEB93}</Project>
       <Name>Tanpohp.Annotations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tanpohp.Extensions\Tanpohp.Extensions.csproj">
+      <Project>{3665CB16-D371-4CF8-ABE7-560895CB373D}</Project>
+      <Name>Tanpohp.Extensions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
