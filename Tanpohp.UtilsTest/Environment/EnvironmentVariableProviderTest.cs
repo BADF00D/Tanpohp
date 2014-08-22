@@ -17,7 +17,7 @@ namespace Tanpohp.UtilsTest.Environment
         [SetUp]
         public void Setup()
         {
-            _provider = new EnvironmentVariableProvider(500, true);
+            _provider = new EnvironmentVariableProvider(100, true);
         }
 
         [TearDown]
@@ -43,15 +43,28 @@ namespace Tanpohp.UtilsTest.Environment
         }
 
         [Test]
+        public void TestSelfRefreshViaGet()
+        {
+            System.Environment.SetEnvironmentVariable(TmpVariableName, "HalloWorld", EnvironmentVariableTarget.User);
+            var beforeChangeValue = _provider.Get(TmpVariableName);
+            Thread.Sleep(200);
+            System.Environment.SetEnvironmentVariable(TmpVariableName, "HalloWorld2", EnvironmentVariableTarget.User);
+            var afterChangeValue = _provider.Get(TmpVariableName);
+
+            Assert.AreNotEqual(beforeChangeValue, afterChangeValue);
+        }
+
+        [Test]
         public void TestRefresh()
         {
             System.Environment.SetEnvironmentVariable(TmpVariableName, "HalloWorld", EnvironmentVariableTarget.User);
-            var value = _provider.Get(TmpVariableName);
-            Thread.Sleep(1000);
+            var beforeChangeValue = _provider.Get(TmpVariableName);
             System.Environment.SetEnvironmentVariable(TmpVariableName, "HalloWorld2", EnvironmentVariableTarget.User);
-            var value2 = _provider.Get(TmpVariableName);
+            _provider.Refresh();
+            var afterChangeValue = _provider.Get(TmpVariableName);
 
-            Assert.AreNotEqual(value, value2);
+            Assert.AreNotEqual(beforeChangeValue, afterChangeValue);
+            Assert.AreEqual("HalloWorld2", afterChangeValue);
         }
     }
 }
