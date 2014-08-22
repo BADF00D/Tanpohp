@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<persons>
+  <Person>
+    <Name>Peter</Name>
+    <Street>Whittam Road</Street>
+  </Person>
+  <Person>
+    <Name>Angela</Name>
+    <Street>Moor Edge</Street>
+  </Person>
+</persons>

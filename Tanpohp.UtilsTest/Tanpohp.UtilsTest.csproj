@@ -44,6 +44,9 @@
     <Compile Include="AbstractBuilderTest.cs" />
     <Compile Include="Environment\EnvironmentVariableProviderTest.cs" />
     <Compile Include="Resources\AbstractEmbeddedRessourceReaderTest.cs" />
+    <Compile Include="Resources\TextResourceReaderTest.cs" />
+    <Compile Include="Resources\XDocumentResourceReaderTest.cs" />
+    <Compile Include="Resources\XmlSchemaRessourceReaderTest.cs" />
     <Compile Include="SwapTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -58,10 +61,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\EmbeddedRessource.txt" />
+    <EmbeddedResource Include="Resources\EmbeddedResource.txt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Resource.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\EmbeddedResource.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\EmbeddedResource.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -45,6 +45,9 @@
     <Compile Include="Environment\EnvironmentVariableProvider.cs" />
     <Compile Include="Environment\IEnvironmentVariableProvider.cs" />
     <Compile Include="Resources\IEmbeddedRessourceReader.cs" />
+    <Compile Include="Resources\TextResourceReader.cs" />
+    <Compile Include="Resources\XDocumentResourceReader.cs" />
+    <Compile Include="Resources\XmlSchemaRessourceReader.cs" />
     <Compile Include="Swap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
