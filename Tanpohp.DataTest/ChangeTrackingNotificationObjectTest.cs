@@ -77,6 +77,12 @@ namespace Tanpohp.DataTest
             Assert.AreEqual(0, _dummy.GetAmountOfChangedProperties());
         }
 
+        [Test]
+        public void TestBuildNestedName()
+        {
+            Assert.AreEqual("one.two", _dummy.BuildNestedName("one", "two"));
+        }
+
         private class Dummy : ChangeTrackingNotificationObject
         {
             private int _property;

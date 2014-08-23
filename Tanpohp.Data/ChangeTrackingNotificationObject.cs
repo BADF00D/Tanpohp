@@ -107,5 +107,17 @@ namespace Tanpohp.Data
             _changedProperties.Clear();
             if (changedPropertyCount > 0) InvokePropertyChanged(() => ContainsChanges);
         }
+
+        /// <summary>
+        /// Build a unique name for ChangeTrackingNotificationObjects that contains other 
+        /// ChangeTrackingNotificationObjects. 
+        /// </summary>
+        /// <param name="property">Name of the property in current object.</param>
+        /// <param name="subProperty">Name of the property in the object of first property.</param>
+        /// <returns></returns>
+        public string BuildNestedName(string property, string subProperty)
+        {
+            return "{0}.{1}".FormatWith(property, subProperty);
+        }
     }
 }
