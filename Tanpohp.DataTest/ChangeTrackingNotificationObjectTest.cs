@@ -80,7 +80,7 @@ namespace Tanpohp.DataTest
         [Test]
         public void TestBuildNestedName()
         {
-            Assert.AreEqual("one.two", _dummy.BuildNestedName("one", "two"));
+            Assert.AreEqual("one.two", ChangeTrackingNotificationObject.BuildNestedName("one", "two"));
         }
 
         private class Dummy : ChangeTrackingNotificationObject

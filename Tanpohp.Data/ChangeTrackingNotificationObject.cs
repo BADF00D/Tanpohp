@@ -115,7 +115,7 @@ namespace Tanpohp.Data
         /// <param name="property">Name of the property in current object.</param>
         /// <param name="subProperty">Name of the property in the object of first property.</param>
         /// <returns></returns>
-        public string BuildNestedName(string property, string subProperty)
+        public static string BuildNestedName(string property, string subProperty)
         {
             return "{0}.{1}".FormatWith(property, subProperty);
         }
