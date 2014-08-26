@@ -5,9 +5,9 @@ using Tanpohp.Extensions;
 
 namespace Tanpohp.Wmi.Hardware
 {
-    public class BrightnessChangedEventArgs : EventArgs
+    public class BrightnessEventArgs : EventArgs
     {
-        public BrightnessChangedEventArgs([NotNull]string instanceName, bool active, byte brightness)
+        public BrightnessEventArgs([NotNull]string instanceName, bool active, byte brightness)
         {
             InstanceName = instanceName;
             Active = active;
@@ -25,13 +25,13 @@ namespace Tanpohp.Wmi.Hardware
             return "{0}(Active:{1}/Brightness:{2})".FormatWith(InstanceName, Active, Brightness);
         }
 
-        public static BrightnessChangedEventArgs From(EventArrivedEventArgs args)
+        public static BrightnessEventArgs From(EventArrivedEventArgs args)
         {
             var instanceName = args.NewEvent.Properties["InstanceName"].Value.ToString();
             var active = bool.Parse(args.NewEvent.Properties["Active"].Value.ToString());
             var brightness = byte.Parse(args.NewEvent.Properties["Brightness"].Value.ToString());
 
-            return new BrightnessChangedEventArgs(instanceName, active, brightness);
+            return new BrightnessEventArgs(instanceName, active, brightness);
         }
     }
 }
