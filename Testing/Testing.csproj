@@ -47,6 +47,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Tanpohp.Extensions\Tanpohp.Extensions.csproj">
+      <Project>{3665CB16-D371-4CF8-ABE7-560895CB373D}</Project>
+      <Name>Tanpohp.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tanpohp.Wmi\Tanpohp.Wmi.csproj">
       <Project>{FA24A38E-0183-4D83-A276-B654B375C8C6}</Project>
       <Name>Tanpohp.Wmi</Name>

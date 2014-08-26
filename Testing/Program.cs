@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Tanpohp.Extensions;
 using Tanpohp.Wmi.Hardware;
 
 namespace Testing
@@ -10,14 +8,26 @@ namespace Testing
     {
         static void Main(string[] args)
         {
-            ScreenBrightness.BrightnessChangedEvent += OnBrightnessChanged;
+            var displays = Display.GetAvailableMonitors();
+            displays.ForEach(d => d.CurrentBrightnessChanged+= OnBrightnessChanged);
             Console.ReadLine();
-            ScreenBrightness.BrightnessChangedEvent -= OnBrightnessChanged;
+            //var sb = new ScreenBrightness();
+            //Console.WriteLine(sb.Active);
+            //Console.WriteLine(sb.Current);
+            //Console.WriteLine(sb.InstanceName);
+            //Console.WriteLine(sb.Levels.ItemsToString());
+            //sb.BrightnessChangedEvent += OnBrightnessChanged;
+            //Console.ReadLine();
+            //sb.BrightnessChangedEvent -= OnBrightnessChanged;
         }
 
-        private static void OnBrightnessChanged(object sender, BrightnessChangedEventArgs e)
+        private static void OnBrightnessChanged(object sender, EventArgs e)
         {
-            Console.WriteLine(e);
+            var display = (sender as Display);
+            Console.WriteLine("#################################");
+            Console.WriteLine("Active: "+display.Active);
+            Console.WriteLine("Brightness: "+display.CurrentBrightness);
+            Console.WriteLine("InstanceName: "+display.InstanceName);
         }
     }
 }

@@ -41,8 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Hardware\BrightnessChangedEventArgs.cs" />
-    <Compile Include="Hardware\ScreenBrightness.cs" />
+    <Compile Include="Hardware\Display.cs" />
+    <Compile Include="Hardware\DisplayType.cs" />
+    <Compile Include="Hardware\ScreenBrightnessWmiEventHandler.cs" />
+    <Compile Include="Hardware\SupportedDisplayFeaturesDescriptor.cs" />
+    <Compile Include="Hardware\VideoInputTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
