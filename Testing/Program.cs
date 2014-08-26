@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Tanpohp.Extensions;
 using Tanpohp.Wmi.Hardware;
 
@@ -8,8 +9,10 @@ namespace Testing
     {
         static void Main(string[] args)
         {
-            var displays = Display.GetAvailableMonitors();
+            var displays = Display.GetAvailableDisplays();
             displays.ForEach(d => d.CurrentBrightnessChanged+= OnBrightnessChanged);
+            displays.Where(d =>d.IsBrightnessSupported).ForEach(d => 
+                d.CurrentBrightness = 50);
             Console.ReadLine();
             //var sb = new ScreenBrightness();
             //Console.WriteLine(sb.Active);

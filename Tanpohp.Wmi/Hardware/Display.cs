@@ -43,7 +43,8 @@ namespace Tanpohp.Wmi.Hardware
         public SupportedDisplayFeaturesDescriptor SupportedDisplayFeatures;
 
         private bool _active;
-        private byte? _currentBrightness;
+        
+        private byte _currentBrightness;
 
         private Display()
         {
@@ -92,6 +93,11 @@ namespace Tanpohp.Wmi.Hardware
         public string InstanceName { get; private set; }
 
         /// <summary>
+        /// Indicates whether driver and monitor supports setting and getting display brightness.
+        /// </summary>
+        public bool IsBrightnessSupported { get; internal set; }
+
+        /// <summary>
         /// Video input type.
         /// </summary>
         public VideoInputType VideoInputType { get; private set; }
@@ -101,21 +107,47 @@ namespace Tanpohp.Wmi.Hardware
         /// <summary>
         /// Current brightness as a percentage of total brightness.
         /// </summary>
-        /// <remarks>Null if this monitor does not report this feature.</remarks>
-        public byte? CurrentBrightness
+        /// <remarks>If IsBrightnessSupported is true: Get/sets current screen brightness. If IsBrightnessSupported is false: Get return 0, set throws a NotSupportedException.</remarks>
+        public byte CurrentBrightness
         {
-            get { return _currentBrightness; }
+            get { return IsBrightnessSupported ? _currentBrightness : (byte)0; }
             set
             {
+                if(!IsBrightnessSupported)
+                    throw new NotSupportedException("This feature is not supported for this display.");
                 if (value == _currentBrightness) return;
 
                 _currentBrightness = value;
 
                 CurrentBrightnessChanged.CheckedInvoke(this);
+                SetWmiBrightness(value);
             }
         }
 
-        public static IList<Display> GetAvailableMonitors()
+        public void SetWmiBrightness(byte value, int timeOut = 0)
+        {
+            try
+            {
+                var managementObject = 
+                    new ManagementObject("root\\WMI", 
+                    "WmiMonitorBrightnessMethods.InstanceName='{0}'".FormatWith(InstanceName),
+                    null);
+
+                // Obtain in-parameters for the method
+                var inParams = managementObject.GetMethodParameters("WmiSetBrightness");
+
+                // Add the input parameters.
+                inParams["Brightness"] = value;
+                inParams["Timeout"] = timeOut;
+                // Execute the method and obtain the return values.
+                managementObject.InvokeMethod("WmiSetBrightness", inParams, null);
+            }
+            catch
+            {
+            }
+        }
+
+        public static IList<Display> GetAvailableDisplays()
         {
             var monitors = new List<Display>(4);
             try
@@ -162,6 +194,7 @@ namespace Tanpohp.Wmi.Hardware
                 var display = monitors.FirstOrDefault(d => d.InstanceName == instanceName);
                 if (display == null) continue;
 
+                display.IsBrightnessSupported = true;
                 display.CurrentBrightness = current;
                 display.LevelCount = level;
             }
