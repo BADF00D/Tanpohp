@@ -115,7 +115,15 @@ namespace Tanpohp.Wmi.Hardware
         /// </summary>
         public VideoInputType VideoInputType { get; private set; }
 
+        /// <summary>
+        /// Number of brightness level supported by this display.
+        /// </summary>
         public int LevelCount { get; private set; }
+
+        /// <summary>
+        /// Brightness levels supported by this display.
+        /// </summary>
+        public byte[] BrightnessLevels { get; private set; }
 
         /// <summary>
         /// Current brightness as a percentage of total brightness.
@@ -190,7 +198,7 @@ namespace Tanpohp.Wmi.Hardware
                     _knownDisplays = displays;
                     UpdateBrightnessAndLevelCount();
                 }
-                catch (ManagementException)
+                catch (ManagementException e)
                 {
                 }
 
@@ -214,6 +222,7 @@ namespace Tanpohp.Wmi.Hardware
             display.MaxHorizontalImageSize = byte.Parse(managementObject["MaxHorizontalImageSize"].ToString());
             display.MaxVerticalImageSize = byte.Parse(managementObject["MaxVerticalImageSize"].ToString());
             display.VideoInputType = (VideoInputType) byte.Parse(managementObject["VideoInputType"].ToString());
+            
             SupportedDisplayFeaturesDescriptor.TryCreate(
                 managementObject["SupportedDisplayFeatures"] as ManagementBaseObject,
                 out display.SupportedDisplayFeatures);
@@ -243,17 +252,19 @@ namespace Tanpohp.Wmi.Hardware
         private static void UpdateBrightnessAndLevelCount()
         {
             var searcher = new ManagementObjectSearcher("root\\WMI", "SELECT * FROM WmiMonitorBrightness");
-            foreach (ManagementObject queryObj in searcher.Get())
+            foreach (ManagementObject managementObject in searcher.Get())
             {
-                var instanceName = queryObj.Properties["InstanceName"].Value.ToString();
-                var current = byte.Parse(queryObj.Properties["CurrentBrightness"].Value.ToString());
-                var level = byte.Parse(queryObj.Properties["Levels"].Value.ToString());
+                var levels = (byte[])managementObject["Level"];
+                var instanceName = managementObject.Properties["InstanceName"].Value.ToString();
+                var current = byte.Parse(managementObject.Properties["CurrentBrightness"].Value.ToString());
+                var level = byte.Parse(managementObject.Properties["Levels"].Value.ToString());
                 var display = _knownDisplays.FirstOrDefault(d => d.InstanceName == instanceName);
                 if (display == null) continue;
 
                 display.IsBrightnessSupported = true;
                 display.CurrentBrightness = current;
                 display.LevelCount = level;
+                display.BrightnessLevels = levels;
             }
         }
     }
