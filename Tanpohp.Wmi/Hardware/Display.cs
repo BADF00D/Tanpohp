@@ -44,13 +44,29 @@ namespace Tanpohp.Wmi.Hardware
             ScreenBrightnessWmiEventHandler.Instance.Register(this);
         }
 
+        public bool IsDisposed { get; private set; }
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
         /// <filterpriority>2</filterpriority>
         public void Dispose()
         {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        ~Display()
+        {
+            Dispose(false);
+        }
+
+        protected void Dispose(bool disposing)
+        {
+            if (IsDisposed) return;
+
             ScreenBrightnessWmiEventHandler.Instance.Unregister(this);
+
+            IsDisposed = true;
         }
 
         /// <summary>
@@ -180,6 +196,14 @@ namespace Tanpohp.Wmi.Hardware
 
                 return _knownDisplays;
             }
+        }
+
+        /// <summary>
+        /// Disposes all displays already known. 
+        /// </summary>
+        public static void DisposeAvailableDisplays()
+        {
+            _knownDisplays.ForEach(d =>d.Dispose());
         }
 
         private static void UpdateDisplay(Display display, ManagementObject managementObject)
