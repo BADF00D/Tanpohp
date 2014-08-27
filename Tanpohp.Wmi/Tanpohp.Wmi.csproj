@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{FA24A38E-0183-4D83-A276-B654B375C8C6}</ProjectGuid>
+    <ProjectGuid>{5CD521C9-F4FD-425F-85AD-4860E38669B3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Tanpohp.Wmi</RootNamespace>

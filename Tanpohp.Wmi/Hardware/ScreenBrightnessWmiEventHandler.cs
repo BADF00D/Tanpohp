@@ -28,8 +28,9 @@ namespace Tanpohp.Wmi.Hardware
         private static ScreenBrightnessWmiEventHandler _instance;
 
         private static readonly object LockKey = new object();
-        private readonly IList<Display> _supervisedDisplays = new List<Display>(4);
 
+        private readonly IList<Display> _supervisedDisplays = new List<Display>(4);
+        private bool _disposed;
 
         private ManagementEventWatcher _eventWatcher;
 
@@ -61,6 +62,8 @@ namespace Tanpohp.Wmi.Hardware
             {
                 if (_supervisedDisplays.Contains(display)) return;
                 _supervisedDisplays.Add(display);
+                if (_supervisedDisplays.Count == 1)
+                    _eventWatcher.Start();
             }
         }
 
@@ -74,6 +77,11 @@ namespace Tanpohp.Wmi.Hardware
             {
                 if (!_supervisedDisplays.Contains(display)) return;
                 _supervisedDisplays.Remove(display);
+                
+                if (_supervisedDisplays.Count != 0) return;
+                
+                _eventWatcher.EventArrived -= OnWmiEventArrived;
+                _eventWatcher.Stop();
             }
         }
 
@@ -85,14 +93,15 @@ namespace Tanpohp.Wmi.Hardware
                 scope.Connect();
 
                 _eventWatcher = new ManagementEventWatcher(scope, new EventQuery(BrightnessEventQuery));
-                _eventWatcher.EventArrived += WmiEventHandler;
+                _eventWatcher.EventArrived += OnWmiEventArrived;
                 _eventWatcher.Start();
+                _eventWatcher.Stop();
             }
             catch (Exception e)
             {
                 if (_eventWatcher != null)
                 {
-                    _eventWatcher.EventArrived -= WmiEventHandler;
+                    _eventWatcher.EventArrived -= OnWmiEventArrived;
                     _eventWatcher.Dispose();
                     _eventWatcher = null;
                 }
@@ -101,21 +110,7 @@ namespace Tanpohp.Wmi.Hardware
             }
         }
 
-        ~ScreenBrightnessWmiEventHandler()
-        {
-            UnregisterWmiBrightnessChangedEvent();
-        }
-
-        private void UnregisterWmiBrightnessChangedEvent()
-        {
-            if (_eventWatcher == null) return;
-
-            _eventWatcher.Stop();
-            _eventWatcher.EventArrived -= WmiEventHandler;
-            _eventWatcher.Dispose();
-        }
-
-        private void WmiEventHandler(object sender, EventArrivedEventArgs e)
+        private void OnWmiEventArrived(object sender, EventArrivedEventArgs e)
         {
             lock (LockKey)
             {

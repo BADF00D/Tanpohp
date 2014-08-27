@@ -17,15 +17,8 @@ namespace Tanpohp.Wmi.Hardware
     /// Video Electronics Standard Association (VESA) Enhanced Extended Display Identification 
     /// Data (E-EDID) standard.
     /// </summary>
-    /// <remarks>MaxHorizontalImageSize and MaxVerticalImageSize represent the maximum image dimensions that 
-    /// the monitor can correctly display for the entire set of supported timing and format combinations. 
-    /// The maximum image dimension is defined by VESA Video Image Area Definition (VIAD) Standard and is 
-    /// rounded to the nearest centimeter. The host computer system can use this data to select the image 
-    /// size and aspect ratio that will allow properly scaled text. Be aware that, if either or both of these 
-    /// fields are zero, then the system makes no assumptions about the display size. For example, the size of 
-    /// a projection display may be undetermined.
-    /// </remarks>
-    public class Display
+    /// <remarks>This class implements IDisposebale and should be disposed before application exists.</remarks>
+    public class Display : IDisposable
     {
         /// <summary>
         /// Occures when Active changed.
@@ -51,7 +44,11 @@ namespace Tanpohp.Wmi.Hardware
             ScreenBrightnessWmiEventHandler.Instance.Register(this);
         }
 
-        ~Display()
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        /// <filterpriority>2</filterpriority>
+        public void Dispose()
         {
             ScreenBrightnessWmiEventHandler.Instance.Unregister(this);
         }
@@ -147,43 +144,79 @@ namespace Tanpohp.Wmi.Hardware
             }
         }
 
-        public static IList<Display> GetAvailableDisplays()
+        private static IList<Display> _knownDisplays = new List<Display>();
+
+        public static IList<Display> AvailableDisplays
         {
-            var monitors = new List<Display>(4);
-            try
+            get
             {
-                var searcher = new ManagementObjectSearcher("root\\WMI", "SELECT * FROM WmiMonitorBasicDisplayParams");
-
-                foreach (ManagementObject queryObj in searcher.Get())
+                try
                 {
-                    var monitor = new Display
-                                      {
-                                          Active = bool.Parse(queryObj["Active"].ToString()),
-                                          DisplayTransferCharacteristic =
-                                              byte.Parse(queryObj["DisplayTransferCharacteristic"].ToString()),
-                                          InstanceName = queryObj["InstanceName"].ToString(),
-                                          MaxHorizontalImageSize =
-                                              byte.Parse(queryObj["MaxHorizontalImageSize"].ToString()),
-                                          MaxVerticalImageSize = byte.Parse(queryObj["MaxVerticalImageSize"].ToString()),
-                                          VideoInputType =
-                                              (VideoInputType) byte.Parse(queryObj["VideoInputType"].ToString())
-                                      };
-                    SupportedDisplayFeaturesDescriptor.TryCreate(
-                        queryObj["SupportedDisplayFeatures"] as ManagementBaseObject,
-                        out monitor.SupportedDisplayFeatures);
+                    var searcher = new ManagementObjectSearcher("root\\WMI", "SELECT * FROM WmiMonitorBasicDisplayParams");
 
-                    monitors.Add(monitor);
+                    var displays = new List<Display>(4);
+                    foreach (ManagementObject managementObject in searcher.Get())
+                    {
+                        var instaneName = managementObject["InstanceName"].ToString();
+                        var display = _knownDisplays.FirstOrDefault(d => d.InstanceName == instaneName);
+                        if (display != null)
+                        {
+                            UpdateDisplay(display, managementObject);
+                            displays.Add(display);
+                        }
+                        else
+                        {
+                            displays.Add(CreateNewDisplay(managementObject));
+                        }
+                    }
+                    var nowLongerAvailableDisplays = _knownDisplays.Except(displays);
+                    nowLongerAvailableDisplays.ForEach(d => d.Dispose());
+                    _knownDisplays = displays;
+                    UpdateBrightnessAndLevelCount();
                 }
-                UpdateBrightnessAndLevelCount(monitors);
-            }
-            catch (ManagementException)
-            {
-            }
+                catch (ManagementException)
+                {
+                }
 
-            return monitors;
+                return _knownDisplays;
+            }
         }
 
-        private static void UpdateBrightnessAndLevelCount(IEnumerable<Display> monitors)
+        private static void UpdateDisplay(Display display, ManagementObject managementObject)
+        {
+            display.Active = bool.Parse(managementObject["Active"].ToString());
+            display.DisplayTransferCharacteristic =
+                byte.Parse(managementObject["DisplayTransferCharacteristic"].ToString());
+            display.MaxHorizontalImageSize = byte.Parse(managementObject["MaxHorizontalImageSize"].ToString());
+            display.MaxVerticalImageSize = byte.Parse(managementObject["MaxVerticalImageSize"].ToString());
+            display.VideoInputType = (VideoInputType) byte.Parse(managementObject["VideoInputType"].ToString());
+            SupportedDisplayFeaturesDescriptor.TryCreate(
+                managementObject["SupportedDisplayFeatures"] as ManagementBaseObject,
+                out display.SupportedDisplayFeatures);
+        }
+
+        private static Display CreateNewDisplay(ManagementBaseObject managementObject)
+        {
+            var display = new Display
+            {
+                Active = bool.Parse(managementObject["Active"].ToString()),
+                DisplayTransferCharacteristic =
+                    byte.Parse(managementObject["DisplayTransferCharacteristic"].ToString()),
+                InstanceName = managementObject["InstanceName"].ToString(),
+                MaxHorizontalImageSize =
+                    byte.Parse(managementObject["MaxHorizontalImageSize"].ToString()),
+                MaxVerticalImageSize = byte.Parse(managementObject["MaxVerticalImageSize"].ToString()),
+                VideoInputType =
+                    (VideoInputType)byte.Parse(managementObject["VideoInputType"].ToString())
+            };
+            SupportedDisplayFeaturesDescriptor.TryCreate(
+                managementObject["SupportedDisplayFeatures"] as ManagementBaseObject,
+                out display.SupportedDisplayFeatures);
+
+            return display;
+        }
+
+        private static void UpdateBrightnessAndLevelCount()
         {
             var searcher = new ManagementObjectSearcher("root\\WMI", "SELECT * FROM WmiMonitorBrightness");
             foreach (ManagementObject queryObj in searcher.Get())
@@ -191,7 +224,7 @@ namespace Tanpohp.Wmi.Hardware
                 var instanceName = queryObj.Properties["InstanceName"].Value.ToString();
                 var current = byte.Parse(queryObj.Properties["CurrentBrightness"].Value.ToString());
                 var level = byte.Parse(queryObj.Properties["Levels"].Value.ToString());
-                var display = monitors.FirstOrDefault(d => d.InstanceName == instanceName);
+                var display = _knownDisplays.FirstOrDefault(d => d.InstanceName == instanceName);
                 if (display == null) continue;
 
                 display.IsBrightnessSupported = true;
