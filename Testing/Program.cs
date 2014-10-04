@@ -9,11 +9,11 @@ namespace Testing
     {
         static void Main(string[] args)
         {
-            var displays = Display.GetAvailableDisplays();
-            displays.ForEach(d => d.CurrentBrightnessChanged+= OnBrightnessChanged);
-            displays.Where(d =>d.IsBrightnessSupported).ForEach(d => 
-                d.CurrentBrightness = 50);
-            Console.ReadLine();
+            //var displays = Display.GetAvailableDisplays();
+            //displays.ForEach(d => d.CurrentBrightnessChanged+= OnBrightnessChanged);
+            //displays.Where(d =>d.IsBrightnessSupported).ForEach(d => 
+            //    d.CurrentBrightness = 50);
+            //Console.ReadLine();
             //var sb = new ScreenBrightness();
             //Console.WriteLine(sb.Active);
             //Console.WriteLine(sb.Current);

@@ -49,6 +49,8 @@
     <Compile Include="Collections\IPool.cs" />
     <Compile Include="Collections\IRingBuffer.cs" />
     <Compile Include="Collections\RingBuffer.cs" />
+    <Compile Include="Event\GenericEventArgs.cs" />
+    <Compile Include="Event\ProgressionEventArgs.cs" />
     <Compile Include="ISealable.cs" />
     <Compile Include="NotificationObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
