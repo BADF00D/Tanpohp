@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyExtensionTest.cs" />
+    <Compile Include="CharExtensionTest.cs" />
     <Compile Include="ComparableExtensionTest.cs" />
     <Compile Include="DateTimeExtensionTest.cs" />
     <Compile Include="DoubleExtensionTest.cs" />

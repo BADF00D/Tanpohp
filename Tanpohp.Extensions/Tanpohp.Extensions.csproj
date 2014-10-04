@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyExtension.cs" />
+    <Compile Include="CharExtension.cs" />
     <Compile Include="ComparableExtension.cs" />
     <Compile Include="DateTimeExtension.cs" />
     <Compile Include="DoubleExtension.cs" />
