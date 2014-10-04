@@ -96,5 +96,95 @@ namespace Tanpohp.Extensions
             var copy = value;
             return ((copy >> 1) << 1) == value;
         }
+
+        /// <summary>
+        /// Clamps value inbetween given bounds.
+        /// </summary>
+        /// <param name="value">Value to clamp.</param>
+        /// <param name="minValue">Lower bound.</param>
+        /// <param name="maxValue">Upper bound.</param>
+        /// <returns></returns>
+        public static byte Clamp(this byte value, byte minValue, byte maxValue)
+        {
+            if(maxValue <= minValue) throw new ArgumentOutOfRangeException("Given bounds are wrong.");
+
+            if (value < minValue) return minValue;
+            return value > maxValue ? maxValue : value;
+        }
+
+        /// <summary>
+        /// Clamps value inbetween given bounds.
+        /// </summary>
+        /// <param name="value">Value to clamp.</param>
+        /// <param name="minValue">Lower bound.</param>
+        /// <param name="maxValue">Upper bound.</param>
+        /// <returns></returns>
+        public static short Clamp(this short value, short minValue, short maxValue)
+        {
+            if (maxValue <= minValue) throw new ArgumentOutOfRangeException("Given bounds are wrong.");
+
+            if (value < minValue) return minValue;
+            return value > maxValue ? maxValue : value;
+        }
+
+        /// <summary>
+        /// Clamps value inbetween given bounds.
+        /// </summary>
+        /// <param name="value">Value to clamp.</param>
+        /// <param name="minValue">Lower bound.</param>
+        /// <param name="maxValue">Upper bound.</param>
+        /// <returns></returns>
+        public static int Clamp(this int value, int minValue, int maxValue)
+        {
+            if (maxValue <= minValue) throw new ArgumentOutOfRangeException("Given bounds are wrong.");
+
+            if (value < minValue) return minValue;
+            return value > maxValue ? maxValue : value;
+        }
+
+        /// <summary>
+        /// Clamps value inbetween given bounds.
+        /// </summary>
+        /// <param name="value">Value to clamp.</param>
+        /// <param name="minValue">Lower bound.</param>
+        /// <param name="maxValue">Upper bound.</param>
+        /// <returns></returns>
+        public static long Clamp(this long value, long minValue, long maxValue)
+        {
+            if (maxValue <= minValue) throw new ArgumentOutOfRangeException("Given bounds are wrong.");
+
+            if (value < minValue) return minValue;
+            return value > maxValue ? maxValue : value;
+        }
+
+        /// <summary>
+        /// Clamps value inbetween given bounds.
+        /// </summary>
+        /// <param name="value">Value to clamp.</param>
+        /// <param name="minValue">Lower bound.</param>
+        /// <param name="maxValue">Upper bound.</param>
+        /// <returns></returns>
+        public static double Clamp(this double value, double minValue, double maxValue)
+        {
+            if (maxValue <= minValue) throw new ArgumentOutOfRangeException("Given bounds are wrong.");
+
+            if (value < minValue) return minValue;
+            return value > maxValue ? maxValue : value;
+        }
+
+        /// <summary>
+        /// Clamps value inbetween given bounds.
+        /// </summary>
+        /// <param name="value">Value to clamp.</param>
+        /// <param name="minValue">Lower bound.</param>
+        /// <param name="maxValue">Upper bound.</param>
+        /// <returns></returns>
+        public static float Clamp(this float value, float minValue, float maxValue)
+        {
+            if (maxValue <= minValue) throw new ArgumentOutOfRangeException("Given bounds are wrong.");
+
+            if (value < minValue) return minValue;
+            return value > maxValue ? maxValue : value;
+        }
     }
 }

@@ -159,5 +159,135 @@ namespace Tanpohp.ExtensionTest
         {
             Assert.IsTrue(0L.IsPowerOfTwo());
         }
+
+        [Test]
+        public void ClampByte()
+        {
+            Assert.AreEqual(3,((byte)3).Clamp(2, 4));
+        }
+
+        [Test]
+        public void ClampToLowerByte()
+        {
+            Assert.AreEqual(1, ((byte)0).Clamp(1, 2));
+            Assert.AreEqual(20, ((byte)10).Clamp(20, 30));
+        }
+
+        [Test]
+        public void ClampToUpperByte()
+        {
+            Assert.AreEqual(2, ((byte)3).Clamp(1, 2));
+            Assert.AreEqual(30, ((byte)40).Clamp(20, 30));
+        }
+
+        [Test]
+        public void ClampShort()
+        {
+            Assert.AreEqual(3, ((short)3).Clamp(2, 4));
+        }
+
+        [Test]
+        public void ClampToLowerShort()
+        {
+            Assert.AreEqual(1, ((short)0).Clamp(1, 2));
+            Assert.AreEqual(20, ((short)10).Clamp(20, 30));
+            Assert.AreEqual(-20, ((short)-30).Clamp(-20, -10));
+        }
+
+        [Test]
+        public void ClampToUpperShort()
+        {
+            Assert.AreEqual(2, ((short)3).Clamp(1, 2));
+            Assert.AreEqual(30, ((short)40).Clamp(20, 30));
+            Assert.AreEqual(-20, ((short)-10).Clamp(-30, -20));
+        }
+
+        [Test]
+        public void ClampInt()
+        {
+            Assert.AreEqual(3, 3.Clamp(2, 4));
+        }
+
+        [Test]
+        public void ClampToLowerInt()
+        {
+            Assert.AreEqual(1, 0.Clamp(1, 2));
+            Assert.AreEqual(20, 10.Clamp(20, 30));
+            Assert.AreEqual(-20, (-30).Clamp(-20, -10));
+        }
+
+        [Test]
+        public void ClampToUpperInt()
+        {
+            Assert.AreEqual(2, (3).Clamp(1, 2));
+            Assert.AreEqual(30, 40.Clamp(20, 30));
+            Assert.AreEqual(-20, (-10).Clamp(-30, -20));
+        }
+
+        [Test]
+        public void ClampLong()
+        {
+            Assert.AreEqual(3, 3L.Clamp(2, 4));
+        }
+
+        [Test]
+        public void ClampToLowerLong()
+        {
+            Assert.AreEqual(1, 0L.Clamp(1, 2));
+            Assert.AreEqual(20, 10L.Clamp(20, 30));
+            Assert.AreEqual(-20, (-30L).Clamp(-20, -10));
+        }
+
+        [Test]
+        public void ClampToUpperLong()
+        {
+            Assert.AreEqual(2, (3L).Clamp(1, 2));
+            Assert.AreEqual(30, 40L.Clamp(20, 30));
+            Assert.AreEqual(-20, (-10L).Clamp(-30, -20));
+        }
+
+        [Test]
+        public void ClampFloat()
+        {
+            Assert.AreEqual(3, 3f.Clamp(2, 4));
+        }
+
+        [Test]
+        public void ClampToLowerFloat()
+        {
+            Assert.AreEqual(1, 0f.Clamp(1, 2));
+            Assert.AreEqual(20, 10f.Clamp(20, 30));
+            Assert.AreEqual(-20, (-30f).Clamp(-20, -10));
+        }
+
+        [Test]
+        public void ClampToUpperFloat()
+        {
+            Assert.AreEqual(2, (3f).Clamp(1, 2));
+            Assert.AreEqual(30, 40f.Clamp(20, 30));
+            Assert.AreEqual(-20, (-10f).Clamp(-30, -20));
+        }
+
+        [Test]
+        public void ClampDouble()
+        {
+            Assert.AreEqual(3, 3d.Clamp(2, 4));
+        }
+
+        [Test]
+        public void ClampToLowerDouble()
+        {
+            Assert.AreEqual(1, 0d.Clamp(1, 2));
+            Assert.AreEqual(20, 10d.Clamp(20, 30));
+            Assert.AreEqual(-20, (-30d).Clamp(-20, -10));
+        }
+
+        [Test]
+        public void ClampToUpperDouble()
+        {
+            Assert.AreEqual(2, (3d).Clamp(1, 2));
+            Assert.AreEqual(30, 40d.Clamp(20, 30));
+            Assert.AreEqual(-20, (-10d).Clamp(-30, -20));
+        }
     }
 }
