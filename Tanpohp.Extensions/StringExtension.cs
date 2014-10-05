@@ -1,4 +1,6 @@
-﻿using Tanpohp.Annotations.Resharper;
+﻿using System;
+using System.Text;
+using Tanpohp.Annotations.Resharper;
 
 namespace Tanpohp.Extensions
 {
@@ -34,6 +36,52 @@ namespace Tanpohp.Extensions
                 i++;
             }
             return false;
+        }
+
+        /// <summary>
+        /// Removes circle, square and curly brackets from given string. 
+        /// </summary>
+        /// <param name="source">Source string.</param>
+        /// <returns>Contens of source string without brackets.</returns>
+        public static string RemoveBraces(this string source)
+        {
+            return RemoveChar(source, c => c.IsBracket());
+        }
+
+        /// <summary>
+        /// Removes all digis from string.
+        /// </summary>
+        /// <param name="source">Source string.</param>
+        /// <returns></returns>
+        public static string RemoveDigit(this string source)
+        {
+            return RemoveChar(source, c => char.IsDigit(c));
+        }
+
+        /// <summary>
+        /// Removes all characters that satisfy predicate. 
+        /// </summary>
+        /// <param name="source">Source string.</param>
+        /// <param name="shouldBeRemoved">Predicate to satisfy.</param>
+        /// <returns></returns>
+        public static string RemoveChar(this string source, Predicate<char> shouldBeRemoved)
+        {
+            var result = new StringBuilder(source.Length);
+            source.ToCharArray().ForEach(c =>{
+                                                 if (!shouldBeRemoved(c)) result.Append(c);
+                                             });
+
+            return result.ToString();
+        }
+
+        /// <summary>
+        /// Removes all letters from source string. 
+        /// </summary>
+        /// <param name="source">Source string.</param>
+        /// <returns></returns>
+        public static string RemoveLetter(this string source)
+        {
+            return RemoveChar(source, c => char.IsLetter(c));
         }
     }
 }
