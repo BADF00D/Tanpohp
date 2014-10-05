@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Hardware\Display.cs" />
     <Compile Include="Hardware\DisplayType.cs" />
     <Compile Include="Hardware\ScreenBrightnessWmiEventHandler.cs" />
