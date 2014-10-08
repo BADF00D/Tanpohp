@@ -51,6 +51,7 @@
     <Compile Include="Calculation\BinaryOperations\SubstractionNodeTest.cs" />
     <Compile Include="Calculation\UnaryOperations\AbsoluteNodeTest.cs" />
     <Compile Include="Calculation\UnaryOperations\SignNodeTest.cs" />
+    <Compile Include="Calculation\UnaryOperations\SquareRootNodeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

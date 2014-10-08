@@ -49,6 +49,7 @@
     <Compile Include="Calculation\ICalculationNode.cs" />
     <Compile Include="Calculation\UnaryOperations\AbsoluteNode.cs" />
     <Compile Include="Calculation\UnaryOperations\SignNode.cs" />
+    <Compile Include="Calculation\UnaryOperations\SquareRootNode.cs" />
     <Compile Include="Calculation\UnaryOperations\UnaryOperationNode.cs" />
     <Compile Include="Calculation\ValueNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
