@@ -107,13 +107,35 @@ namespace Tanpohp.DataTest.Collections
         }
 
         [Test]
-        public void Clear()
+        public void ClearWithItemRemoved()
         {
             var deletedItems = new List<int>();
             _collection.ItemRemoved += (sender, args) => deletedItems.Add(args.Item);
+
+            var clearCalled = false;
+            _collection.InvokeItemRemovedOnClear = true;
+            _collection.Cleared += (sender, args) => clearCalled = true;
+
             _collection.Clear();
             Assert.AreEqual(0, _collection.Count);
             Assert.AreEqual(10, deletedItems.Count);
+            Assert.IsTrue(clearCalled, "Clear was not called");
+        }
+
+        [Test]
+        public void ClearWithoutItemRemoved()
+        {
+            var removedCalled = false;
+            _collection.ItemRemoved += (sender, args) => removedCalled = true;
+            var clearCalled = false;
+            _collection.Cleared += (sender, args) => clearCalled = true;
+            _collection.InvokeItemRemovedOnClear = false;
+
+            _collection.Clear();
+
+            Assert.AreEqual(0, _collection.Count);
+            Assert.IsFalse(removedCalled, "Removed was called, but should not.");
+            Assert.IsTrue(clearCalled, "Clear was not called.");
         }
     }
 }

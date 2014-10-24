@@ -1,7 +1,12 @@
-﻿using System;
+﻿#region usings
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Tanpohp.Extensions;
+
+#endregion
 
 namespace Tanpohp.Data.Collections
 {
@@ -21,10 +26,14 @@ namespace Tanpohp.Data.Collections
             _items = new List<T>(sequence);
         }
 
-        public event EventHandler<ListChangedEventArgs<T>> ItemAdded;
-        
-        public event EventHandler<ListChangedEventArgs<T>> ItemRemoved;
+        #region INotifyChangedCollection<T> Members
 
+        public event EventHandler<ListChangedEventArgs<T>> ItemAdded;
+
+        public event EventHandler<ListChangedEventArgs<T>> ItemRemoved;
+        public event EventHandler Cleared;
+
+        public bool InvokeItemRemovedOnClear { get; set; }
 
         public IEnumerator<T> GetEnumerator()
         {
@@ -45,22 +54,14 @@ namespace Tanpohp.Data.Collections
             InvokeHandler(ItemAdded, item);
         }
 
-        private void InvokeHandler(EventHandler<ListChangedEventArgs<T>> eventHandler, T item)
-        {
-            if (eventHandler == null) return;
-
-            eventHandler(this, new ListChangedEventArgs<T>(item));
-        }
-
         public void Clear()
         {
-            List<T> copy;
-            lock (_lockKey)
-            {
-                copy = _items.ToList();
-                _items.Clear();
-            }
-            copy.ForEach(i => InvokeHandler(ItemRemoved, i));
+            if (InvokeItemRemovedOnClear)
+                ClearAndInvokeItemRemoved();
+            else
+                ClearWithoutItemRemoved();
+
+            Cleared.CheckedInvoke(this);
         }
 
         public bool Contains(T item)
@@ -111,6 +112,34 @@ namespace Tanpohp.Data.Collections
                     return _items.IsReadOnly;
                 }
             }
+        }
+
+        #endregion
+
+        private void InvokeHandler(EventHandler<ListChangedEventArgs<T>> eventHandler, T item)
+        {
+            if (eventHandler == null) return;
+
+            eventHandler(this, new ListChangedEventArgs<T>(item));
+        }
+
+        private void ClearWithoutItemRemoved()
+        {
+            lock (_lockKey)
+            {
+                _items.Clear();
+            }
+        }
+
+        private void ClearAndInvokeItemRemoved()
+        {
+            List<T> copy;
+            lock (_lockKey)
+            {
+                copy = _items.ToList();
+                _items.Clear();
+            }
+            copy.ForEach(i => InvokeHandler(ItemRemoved, i));
         }
     }
 }
