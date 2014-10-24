@@ -105,5 +105,15 @@ namespace Tanpohp.DataTest.Collections
             Assert.AreEqual(3, array[8]);
             Assert.AreEqual(4, array[9]);
         }
+
+        [Test]
+        public void Clear()
+        {
+            var deletedItems = new List<int>();
+            _collection.ItemRemoved += (sender, args) => deletedItems.Add(args.Item);
+            _collection.Clear();
+            Assert.AreEqual(0, _collection.Count);
+            Assert.AreEqual(10, deletedItems.Count);
+        }
     }
 }

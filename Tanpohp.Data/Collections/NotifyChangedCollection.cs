@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Tanpohp.Data.Collections
 {
@@ -53,10 +54,13 @@ namespace Tanpohp.Data.Collections
 
         public void Clear()
         {
+            List<T> copy;
             lock (_lockKey)
             {
+                copy = _items.ToList();
                 _items.Clear();
             }
+            copy.ForEach(i => InvokeHandler(ItemRemoved, i));
         }
 
         public bool Contains(T item)
