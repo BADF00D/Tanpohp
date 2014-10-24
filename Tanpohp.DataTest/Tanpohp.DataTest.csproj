@@ -47,6 +47,7 @@
     <Compile Include="AbstractPoolTest.cs" />
     <Compile Include="Collections\CacheTest.cs" />
     <Compile Include="ChangeTrackingNotificationObjectTest.cs" />
+    <Compile Include="Collections\NotifyChangedCollectionTest.cs" />
     <Compile Include="Collections\RingBufferTest.cs" />
     <Compile Include="NotificationObjectTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
