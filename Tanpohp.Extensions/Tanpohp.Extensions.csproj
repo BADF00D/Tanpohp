@@ -57,6 +57,7 @@
     <Compile Include="RandomExtension.cs" />
     <Compile Include="StringExtension.cs" />
     <Compile Include="TypeExtension.cs" />
+    <Compile Include="XmlReaderExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tanpohp.Annotations\Tanpohp.Annotations.csproj">
