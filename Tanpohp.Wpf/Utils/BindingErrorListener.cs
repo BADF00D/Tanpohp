@@ -15,16 +15,19 @@ namespace Tanpohp.Wpf.Utils
     {
         private Action<string> _logAction;
 
+        [DebuggerStepThrough]
         public static void Listen(Action<string> logAction)
         {
             PresentationTraceSources.DataBindingSource.Listeners.Add(new BindingErrorListener {_logAction = logAction});
         }
 
+        [DebuggerStepThrough]
         public static void HandleErrorsAsExceptions()
         {
             Listen(message => { throw new Exception(message); });
         }
 
+        [DebuggerStepThrough]
         public static void DisplayErrorsInMessageBox()
         {
             Listen(message => MessageBox.Show(message));
