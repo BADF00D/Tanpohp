@@ -56,6 +56,7 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="AttachedProperty\ListboxIsAutoscrollDependencyObject.cs" />
     <Compile Include="Commands\ACanAlwaysExcecuteCommand.cs" />
     <Compile Include="Commands\ChangeSelectedFolderCommand.cs" />
     <Compile Include="Converter\BooleanToConverter.cs" />
