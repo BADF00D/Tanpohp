@@ -37,7 +37,7 @@ namespace Tanpohp.UtilsTest.Resources
         [Test]
         public void TestLoad1()
         {
-            var text = _reader.LoadResource("Resources.EmbeddedRessource.txt",
+            var text = _reader.LoadResource("Resources.EmbeddedResource.txt",
                                             typeof (AbstractEmbeddedRessourceReaderTest).Assembly);
             Assert.AreEqual("test", text);
         }

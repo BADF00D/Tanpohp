@@ -16,7 +16,8 @@ namespace Tanpohp.Utils.Resources
         public T LoadResource(string uri, Assembly assembly)
         {
             var assemblyName = assembly.GetName().Name;
-            var stream = assembly.GetManifestResourceStream(assemblyName + "." + uri);
+        	uri = assemblyName + "." + uri;
+            var stream = assembly.GetManifestResourceStream(uri);
 
             if (stream == null) ThrowException(uri, assembly);
 
