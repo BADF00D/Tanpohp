@@ -34,6 +34,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tanpohp.Diagnostics", "Tanpohp.Diagnostics\Tanpohp.Diagnostics.csproj", "{A8538B57-EDF6-4980-9173-003F5D2963E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tanpohp.DiagnosticsTest", "Tanpohp.DiagnosticsTest\Tanpohp.DiagnosticsTest.csproj", "{A7A85949-BB1D-448C-9423-425DD75BBB5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -165,6 +167,16 @@ Global
 		{A8538B57-EDF6-4980-9173-003F5D2963E3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{A8538B57-EDF6-4980-9173-003F5D2963E3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{A8538B57-EDF6-4980-9173-003F5D2963E3}.Release|x86.ActiveCfg = Release|Any CPU
+		{A7A85949-BB1D-448C-9423-425DD75BBB5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7A85949-BB1D-448C-9423-425DD75BBB5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7A85949-BB1D-448C-9423-425DD75BBB5A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A7A85949-BB1D-448C-9423-425DD75BBB5A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A7A85949-BB1D-448C-9423-425DD75BBB5A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A7A85949-BB1D-448C-9423-425DD75BBB5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7A85949-BB1D-448C-9423-425DD75BBB5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7A85949-BB1D-448C-9423-425DD75BBB5A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A7A85949-BB1D-448C-9423-425DD75BBB5A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A7A85949-BB1D-448C-9423-425DD75BBB5A}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -177,5 +189,6 @@ Global
 		{B6E63F8C-429E-4AE3-991C-AB3B73D89A47} = {10EF0417-6DAA-4643-877D-ED67727AB66C}
 		{DBFFA722-F930-4EC1-AFC9-B0C319FFF5F5} = {10EF0417-6DAA-4643-877D-ED67727AB66C}
 		{F18D1183-4611-4CAC-ABF7-A9C352D06803} = {10EF0417-6DAA-4643-877D-ED67727AB66C}
+		{A7A85949-BB1D-448C-9423-425DD75BBB5A} = {10EF0417-6DAA-4643-877D-ED67727AB66C}
 	EndGlobalSection
 EndGlobal
