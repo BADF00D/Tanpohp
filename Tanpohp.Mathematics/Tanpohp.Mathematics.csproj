@@ -52,6 +52,8 @@
     <Compile Include="Calculation\UnaryOperations\SquareRootNode.cs" />
     <Compile Include="Calculation\UnaryOperations\UnaryOperationNode.cs" />
     <Compile Include="Calculation\ValueNode.cs" />
+    <Compile Include="DistanceCalculation\IStringDistanceCalculator.cs" />
+    <Compile Include="DistanceCalculation\LevenshteinDistanceCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
