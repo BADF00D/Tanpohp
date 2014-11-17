@@ -1,0 +1,11 @@
+<NUnitProject>
+  <Settings activeconfig="Debug"/>
+  <Config name="Debug">
+    <assembly path="Tanpohp.DataTest\bin\Debug\Tanpohp.DataTest.dll"/>
+    <assembly path="Tanpohp.DiagnosticsTest\bin\Debug\Tanpohp.DiagnosticsTest.dll"/>
+	<assembly path="Tanpohp.ExtensionTest\bin\Debug\Tanpohp.ExtensionTest.dll"/>
+    <assembly path="Tanpohp.MathematicsTest\bin\Debug\Tanpohp.MathematicsTest.dll"/>
+	<assembly path="Tanpohp.UtilsTest\bin\Debug\Tanpohp.UtilsTest.dll"/>
+	<assembly path="Tanpohp.WpfTest\bin\Debug\Tanpohp.WpfTest.dll"/>
+  </Config>
+</NUnitProject>

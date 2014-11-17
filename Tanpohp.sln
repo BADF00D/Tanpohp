@@ -12,6 +12,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tanpohp.DataTest", "Tanpohp.DataTest\Tanpohp.DataTest.csproj", "{5BE2AAEA-4C6B-4188-9D32-6D03766DFF9F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{10EF0417-6DAA-4643-877D-ED67727AB66C}"
+	ProjectSection(SolutionItems) = preProject
+		NUnitTests.nunit = NUnitTests.nunit
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tanpohp.Utils", "Tanpohp.Utils\Tanpohp.Utils.csproj", "{6601C28F-53A6-46D6-8323-00B3496D2D84}"
 EndProject
