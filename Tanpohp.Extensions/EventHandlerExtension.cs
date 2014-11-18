@@ -36,7 +36,7 @@ namespace Tanpohp.Extensions
         /// <param name="handler">EventHandler to invoke.</param>
         /// <param name="sender">Sender that invokes event. Usually "this".</param>
         /// <param name="args">Arguments the handler should be invoked with.</param>
-        public static void CheckedInvoke<T>(this EventHandler<T> handler, [NotNull]object sender, [NotNull]T args) where T : EventArgs
+        public static void CheckedInvoke<T>(this EventHandler<T> handler, [NotNull]object sender, [NotNull]T args)
         {
             if (handler != null) handler(sender, args);
         }
