@@ -18,7 +18,7 @@ namespace Tanpohp.DataTest.Collections
         }
 
         [Test]
-        public void TestAdd1()
+        public void TestAddValue3WithKey3()
         {
             var key = 0;
             var value = string.Empty;

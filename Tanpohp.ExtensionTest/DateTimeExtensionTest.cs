@@ -12,19 +12,19 @@ namespace Tanpohp.ExtensionTest
     public class DateTimeExtensionTest
     {
         [Test]
-        public static void IsFutureTest0()
+        public static void IsFutureWithNow()
         {
             Assert.IsFalse(DateTime.Now.IsFuture());
         }
 
         [Test]
-        public static void IsFutureTest1()
+        public static void IsFutureWithYear3000()
         {
             Assert.IsTrue((new DateTime(3000, 1, 1)).IsFuture());
         }
 
         [Test]
-        public static void IsFutureTest2()
+        public static void IsFutureWithYear1000()
         {
             Assert.IsFalse((new DateTime(1000, 1, 1)).IsFuture());
         }
