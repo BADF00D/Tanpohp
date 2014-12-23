@@ -1,6 +1,7 @@
 ﻿namespace Tanpohp.MathematicsTest.Spline
 {
     using System;
+    using Extension;
     using Mathematics;
     using Mathematics.Spline;
     using NUnit.Framework;
@@ -25,13 +26,6 @@
             Assert.AreEqual(expected.Z, actual.Z, delta, "Z");
         }
 
-        private static void AssertAreAqual(Vector3 expected, Vector3 actual, Vector3 delta)
-        {
-            Assert.AreEqual(expected.X, actual.X, delta.X, "X");
-            Assert.AreEqual(expected.Y, actual.Y, delta.Y, "Y");
-            Assert.AreEqual(expected.Z, actual.Z, delta.Z, "Z");
-        }
-
         [Test]
         public void InterpolateQuadricCurve()
         {
@@ -42,7 +36,7 @@
 
             var interpoaltedPoint = _interpolator.Interpolate(.5, .5, point0, point1, point2, point3);
 
-            AssertAreAqual(new Vector3(0, .5, 0), interpoaltedPoint, new Vector3(DefaultDelta, .25, DefaultDelta));
+            new Vector3(0, .5, 0).AssertAreEqual(interpoaltedPoint, new Vector3(DefaultDelta, .25, DefaultDelta));
         }
 
         [Test]
@@ -55,8 +49,8 @@
 
             var interpoaltedPoint = _interpolator.Interpolate(.5, .5, point0, point1, point2, point3);
 
-            AssertAreAqual(new Vector3(Math.PI*3.0/4, Math.Sin(Math.PI*3.0/4), 0), interpoaltedPoint,
-                new Vector3(DefaultDelta, .125, DefaultDelta));
+            new Vector3(Math.PI*3.0/4, Math.Sin(Math.PI*3.0/4), 0).AssertAreEqual(interpoaltedPoint,new Vector3(DefaultDelta, .125, DefaultDelta));
+
         }
 
         [Test]
@@ -69,7 +63,7 @@
 
             var interpoaltedPoint = _interpolator.Interpolate(.5, .5, point0, point1, point2, point3);
 
-            AssertAreAqual(new Vector3(1.5, 0, 0), interpoaltedPoint);
+            new Vector3(1.5,0,0).AssertAreEqual(interpoaltedPoint);
         }
     }
 }

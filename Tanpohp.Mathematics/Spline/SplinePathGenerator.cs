@@ -3,7 +3,11 @@
     using System;
     using System.Collections.Generic;
 
-    public class SplinePathGenerator : ISplinePathGenerator
+    /// <summary>
+    /// Calculates number of interpolated points between two control points by their direct distance. 
+    /// Between two control points, at least 2 interpolated points are generated.
+    /// </summary>
+    internal class SplinePathGenerator : ISplinePathGenerator
     {
         private readonly ICubicSplineInterpolator _splineInterpolator;
 
@@ -22,7 +26,7 @@
                 var point2 = controlPoints[i + 1];
                 var point3 = controlPoints[i + 2];
 
-                var segments = (float)Math.Max(3, Math.Ceiling(point1.DistanceTo(ref point2) / lengthPerSegment));
+                var segments = Math.Max(3, Math.Ceiling(point1.DistanceTo(ref point2) / lengthPerSegment));
                 path.Add(point1);
                 for (var j = 1; j < segments; j++)
                 {
