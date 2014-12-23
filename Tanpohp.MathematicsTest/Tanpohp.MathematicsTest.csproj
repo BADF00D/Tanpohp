@@ -56,7 +56,11 @@
     <Compile Include="Calculation\UnaryOperations\SignNodeTest.cs" />
     <Compile Include="Calculation\UnaryOperations\SquareRootNodeTest.cs" />
     <Compile Include="DistanceCalculation\LevenshteinDistanceCalculatorTest.cs" />
+    <Compile Include="Extension\Vector3Extension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Spline\CubicCattMullRomSplineInterpolatorTest.cs" />
+    <Compile Include="Spline\SplinePathGeneratorTest.cs" />
+    <Compile Include="Vector3Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tanpohp.Extensions\Tanpohp.Extensions.csproj">
@@ -68,6 +72,7 @@
       <Name>Tanpohp.Mathematics</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
