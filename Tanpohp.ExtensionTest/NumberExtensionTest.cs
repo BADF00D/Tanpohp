@@ -7,6 +7,8 @@ using Tanpohp.Extensions;
 
 namespace Tanpohp.ExtensionTest
 {
+    using System;
+
     [TestFixture]
     public class NumberExtensionTest
     {
@@ -288,6 +290,37 @@ namespace Tanpohp.ExtensionTest
             Assert.AreEqual(2, (3d).Clamp(1, 2));
             Assert.AreEqual(30, 40d.Clamp(20, 30));
             Assert.AreEqual(-20, (-10d).Clamp(-30, -20));
+        }
+
+        [Test]
+        public void ReverseBytesInUInt16()
+        {
+            const UInt16 value = (UInt16)0xFF00;
+            var result = value.ReverseBytes();
+
+            Assert.AreEqual(0x00FF, result);
+
+            var result2 = result.ReverseBytes();
+
+            Assert.AreEqual(0xFF00, result2);
+        }
+        
+        [Test]
+        public void ReverseBytesInUInt32()
+        {
+            const UInt32 value = 0xFF00FF00;
+            var result = value.ReverseBytes();
+
+            Assert.AreEqual(0x00FF00FF, result);
+        }
+
+        [Test]
+        public void ReverseBytesInUInt64()
+        {
+            const UInt64 value = 0xFF00FF00FF00FF00;
+            var result = value.ReverseBytes();
+
+            Assert.AreEqual(0x00FF00FF00FF00FF, result);
         }
     }
 }
