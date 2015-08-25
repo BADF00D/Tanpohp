@@ -8,7 +8,6 @@ using Tanpohp.Wpf.Commands;
 
 namespace Tanpohp.WpfTest.Commands
 {
-    [TestFixture]
     public class ACanAlwaysExcecuteCommandTest
     {
         private class DummyACanAlwaysExcecuteCommand : ACanAlwaysExcecuteCommand
